@@ -1,10 +1,5 @@
-const combineRoutes = require('koa-combine-routers');
+import combineRoutes from 'koa-combine-routers'
 
-// var aroutes = require('./aRouter');
-import aroutes from './aRouter';
-var broutes = require('./bRouter');
+import demoRouter from './demoRouter'
 
-module.exports = combineRoutes(
-  aroutes,
-  broutes
-)
+export default combineRoutes(demoRouter)

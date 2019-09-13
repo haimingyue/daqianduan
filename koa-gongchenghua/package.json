@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon src/index.js",
-    "start:es6": "nodemon --exec babel-node src/index.js"
+    "start:es6": "nodemon --exec babel-node src/index.js",
+    "build": "cross-env NODE_ENV=prod webpack --config config/webpack.config.prod.js",
+    "dev": "cross-env NODE_ENV=dev nodemon --exec babel-node --inspect ./src/index.js",
+    "clean": "rimraf dist"
   },
   "keywords": [],
   "author": "",
@@ -22,15 +25,19 @@
     "koa": "^2.8.1",
     "koa-body": "^4.1.1",
     "koa-combine-routers": "^4.0.2",
+    "koa-compose": "^4.1.0",
+    "koa-compress": "^3.0.0",
     "koa-helmet": "^5.1.0",
     "koa-json": "^2.0.2",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
-    "webpack": "^4.39.3",
+    "webpack": "^4.40.0",
     "webpack-cli": "^3.3.8",
+    "webpack-merge": "^4.2.2",
     "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
-    "nodemon": "^1.19.2"
+    "nodemon": "^1.19.2",
+    "terser-webpack-plugin": "^2.0.1"
   }
 }
