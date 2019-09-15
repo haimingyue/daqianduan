@@ -1,18 +1,16 @@
-const Koa = require('koa');
-const path = require('path');
-const app = new Koa();
+import Koa from 'koa';
+import path from 'path';
+import helmet from 'koa-helmet';
+import statics from 'koa-static';
 
-const router = require('./routes/routes');
-
-const helmet = require('koa-helmet');
-
-const statics = require('koa-static');
+import router from './routes/routes';
 import koaBody from 'koa-body';
 import jsonutil from 'koa-json';
 import cors from '@koa/cors';
 import compose from 'koa-compose';
 import compress from 'koa-compress';
 
+const app = new Koa();
 const isDevMode = process.env.NODE_ENV === 'production' ? false : true;
 
 const middleware = compose([
@@ -26,7 +24,6 @@ const middleware = compose([
 if (!isDevMode) {
   app.use(compress())
 }
-
 app.use(middleware);
 app.use(router());
 
