@@ -1,11 +1,15 @@
-import { getVal, setVal,getHVal } from './RedisConfig'
+import { getValue, setValue, getHValue, delValue } from './RedisConfig'
 
-setVal('imooc', 'imooc message from redis client')
-getVal('imooc').then(res => {
-    console.log('res', res)
+setValue('imooc', 'imooc message from redis client')
+
+getValue('imooc').then((res) => {
+  console.log('getValue:' + res)
 })
 
-setVal('imoocObj', {name: 'simoon', age: 30})
-getHVal('imoocObj').then(res => {
-    console.log('res', res)
+delValue('imooc')
+
+setValue('imoocobj', {name: 'brian', age: 30, email: 'brian@toimc.com'})
+
+getHValue('imoocobj').then((res) => {
+  console.log('getHValue:' +JSON.stringify(res, null, 2))
 })
